@@ -1,5 +1,5 @@
-cmd: /root/github.com/infinitybotlist/sysmanage-web/github.com/infinitybotlist/sysmanage-web
-dir: /root/github.com/infinitybotlist/sysmanage-web
+cmd: /root/sysmanage-ibl/sysmanage-ibl
+dir: /root/sysmanage-ibl
 target: ibl
 description: System Management [v4]
 after: ibl-maint
