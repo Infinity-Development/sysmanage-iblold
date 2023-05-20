@@ -1,0 +1,14 @@
+cmd: /usr/bin/npm start
+dir: /root/Tweeter
+target: tweeter
+description: Tweeter Bot
+after: ibl-maint
+broken: true
+git:
+    repo: https://github.com/TweeterBot/Client
+    ref: refs/heads/master
+    build_commands:
+        - npm install
+    env: {}
+    allow_dirty: false
+    config_files: []
