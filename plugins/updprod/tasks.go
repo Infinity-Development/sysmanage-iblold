@@ -52,7 +52,6 @@ func deleteBranchProtection(taskId string, client http.Client) bool {
 		return false
 	}
 
-	logger.LogMap.Add(taskId, "SUCCESS: Disabled branch protection", true)
 	return true
 }
 
@@ -96,7 +95,6 @@ func deleteProdBranch(taskId string, client http.Client) bool {
 		return true
 	}
 
-	logger.LogMap.Add(taskId, "SUCCESS: Deleted branch", true)
 	return true
 }
 

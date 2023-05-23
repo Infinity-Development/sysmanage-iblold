@@ -86,12 +86,16 @@ func updateProdTask(taskId string) {
 		if ok := deleteBranchProtection(taskId, client); !ok {
 			return
 		}
+
+		logger.LogMap.Add(taskId, "SUCCESS: Deleted existing branch protection", true)
 	}
 
 	// Delete old production branch
 	if ok := deleteProdBranch(taskId, client); !ok {
 		return
 	}
+
+	logger.LogMap.Add(taskId, "SUCCESS: Deleted old production branch", true)
 
 	// Create new production branch
 	logger.LogMap.Add(taskId, "", true)
@@ -112,11 +116,17 @@ func updateProdTask(taskId string) {
 	logger.LogMap.Add(taskId, "SUCCESS: Created new production branch", true)
 
 	// Create new production branch protection
+	if ok := createBranchProtection(taskId, client); !ok {
+		return
+	}
+
+	logger.LogMap.Add(taskId, "SUCCESS: Created branch protection", true)
+
 	if !bpDisable {
 		if ok := createBranchProtection(taskId, client); !ok {
 			return
 		}
-	}
 
-	logger.LogMap.Add(taskId, "SUCCESS: Created branch protection", true)
+		logger.LogMap.Add(taskId, "SUCCESS: Created branch protection", true)
+	}
 }
