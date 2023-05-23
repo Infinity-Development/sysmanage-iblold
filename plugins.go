@@ -1,6 +1,8 @@
 package main
 
 import (
+	"sysmanage-ibl/plugins/updprod"
+
 	"github.com/infinitybotlist/sysmanage-web/plugins/actions"
 	"github.com/infinitybotlist/sysmanage-web/plugins/frontend"
 	"github.com/infinitybotlist/sysmanage-web/plugins/nginx"
@@ -14,5 +16,6 @@ var plugins = map[string]types.Plugin{
 	"systemd":  systemd.InitPlugin,
 	"persist":  persist.InitPlugin,
 	"actions":  actions.InitPlugin,
+	"updprod":  updprod.InitPlugin,
 	"frontend": frontend.InitPlugin,
 }
