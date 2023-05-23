@@ -122,5 +122,15 @@ func updateProdTask(taskId string) {
 		}
 
 		logger.LogMap.Add(taskId, "SUCCESS: Created branch protection", true)
+
+		// Admin enforce
+		if ok := enableAdminEnforce(taskId, client); !ok {
+			return
+		}
+
+		logger.LogMap.Add(taskId, "SUCCESS: Enabled enforce_admins", true)
 	}
+
+	logger.LogMap.Add(taskId, "", true)
+	logger.LogMap.Add(taskId, "SUCCESS", true)
 }

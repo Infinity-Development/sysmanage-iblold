@@ -239,3 +239,34 @@ func createBranchProtection(taskId string, client http.Client) bool {
 
 	return true
 }
+
+func enableAdminEnforce(taskId string, client http.Client) bool {
+	resp, err := authReq(
+		client,
+		"POST",
+		fmt.Sprintf(
+			"https://api.github.com/repos/%s/branches/production/protection/enforce_admins",
+			GitRepo,
+		),
+		nil,
+	)
+
+	if err != nil {
+		logger.LogMap.Add(taskId, "FATAL: Failed to make request to enable enforce_admin: "+err.Error(), true)
+		return false
+	}
+
+	if resp.StatusCode > 400 {
+		body, err := io.ReadAll(resp.Body)
+
+		if err != nil {
+			logger.LogMap.Add(taskId, "FATAL: Failed to read response body: "+err.Error(), true)
+			return false
+		}
+
+		logger.LogMap.Add(taskId, "FATAL: Failed to enable enforce_admin: "+string(body), true)
+		return false
+	}
+
+	return true
+}
