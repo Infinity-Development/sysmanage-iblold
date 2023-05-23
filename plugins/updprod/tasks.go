@@ -226,7 +226,14 @@ func createBranchProtection(taskId string, client http.Client) bool {
 	}
 
 	if resp.StatusCode > 400 {
-		logger.LogMap.Add(taskId, "FATAL: Failed to create branch protection", true)
+		body, err := io.ReadAll(resp.Body)
+
+		if err != nil {
+			logger.LogMap.Add(taskId, "FATAL: Failed to read response body: "+err.Error(), true)
+			return false
+		}
+
+		logger.LogMap.Add(taskId, "FATAL: Failed to create branch protection: "+string(body), true)
 		return false
 	}
 
