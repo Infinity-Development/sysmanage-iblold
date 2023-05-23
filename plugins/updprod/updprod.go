@@ -110,4 +110,13 @@ func updateProdTask(taskId string) {
 	}
 
 	logger.LogMap.Add(taskId, "SUCCESS: Created new production branch", true)
+
+	// Create new production branch protection
+	if !bpDisable {
+		if ok := createBranchProtection(taskId, client); !ok {
+			return
+		}
+	}
+
+	logger.LogMap.Add(taskId, "SUCCESS: Created branch protection", true)
 }

@@ -181,6 +181,56 @@ func createProdBranch(taskId string, sha string, client http.Client) bool {
 		return false
 	}
 
-	logger.LogMap.Add(taskId, "SUCCESS: Created branch", true)
+	return true
+}
+
+func createBranchProtection(taskId string, client http.Client) bool {
+	body, err := json.Marshal(map[string]any{
+		"required_status_checks": nil,
+		"enforce_admins":         true,
+		"required_pull_request_reviews": map[string]any{
+			"dismissal_restrictions": map[string]any{
+				"users": []any{},
+				"teams": []any{},
+			},
+			"dismiss_stale_reviews":           true,
+			"require_code_owner_reviews":      true,
+			"required_approving_review_count": 1,
+		},
+		"restrictions": map[string]any{
+			"users": []any{},
+			"teams": []any{},
+			"apps":  []any{},
+		},
+		"allow_deletions": false,
+		"block_creations": false,
+		"lock_branch":     true,
+	})
+
+	if err != nil {
+		logger.LogMap.Add(taskId, "FATAL: Failed to marshal request body: "+err.Error(), true)
+		return false
+	}
+
+	resp, err := authReq(
+		client,
+		"PUT",
+		fmt.Sprintf(
+			"https://api.github.com/repos/%s/branches/production/protection",
+			GitRepo,
+		),
+		bytes.NewReader(body),
+	)
+
+	if err != nil {
+		logger.LogMap.Add(taskId, "FATAL: Failed to make request to create branch protection: "+err.Error(), true)
+		return false
+	}
+
+	if resp.StatusCode > 400 {
+		logger.LogMap.Add(taskId, "FATAL: Failed to create branch protection", true)
+		return false
+	}
+
 	return true
 }
