@@ -2,7 +2,7 @@ module sysmanage-ibl
 
 go 1.20
 
-require github.com/infinitybotlist/sysmanage-web v0.0.0-20230523065014-a725525fc34b
+require github.com/infinitybotlist/sysmanage-web v0.0.0-20230523065524-44ff942026d3
 
 require (
 	github.com/Microsoft/go-winio v0.6.1 // indirect
