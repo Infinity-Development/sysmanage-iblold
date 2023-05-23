@@ -74,10 +74,10 @@ func updateProdTask(taskId string) {
 		if strings.Contains(string(body), "GitHub Pro") {
 			logger.LogMap.Add(taskId, "WARNING: Branch protection is disabled due to Github Pro subscription expiry: "+string(body), true)
 			bpDisable = true
+		} else {
+			logger.LogMap.Add(taskId, "FATAL: Failed to disable enforce_admin: "+string(body), true)
+			return
 		}
-
-		logger.LogMap.Add(taskId, "FATAL: Failed to disable enforce_admin: "+string(body), true)
-		return
 	}
 
 	logger.LogMap.Add(taskId, "SUCCESS: Disabled enforce_admins", true)
