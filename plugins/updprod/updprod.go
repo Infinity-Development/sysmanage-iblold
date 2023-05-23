@@ -132,5 +132,38 @@ func updateProdTask(taskId string) {
 	}
 
 	logger.LogMap.Add(taskId, "", true)
-	logger.LogMap.Add(taskId, "SUCCESS", true)
+	logger.LogMap.Add(taskId, "=> Acking Vercel Deploy Hook", true)
+
+	// Ack Vercel deploy hook
+	req, err = http.NewRequest(
+		"POST",
+		VercelDeployHook,
+		nil,
+	)
+
+	if err != nil {
+		logger.LogMap.Add(taskId, "FATAL: Failed to create request: "+err.Error(), true)
+	}
+
+	req.Header.Set("User-Agent", GithubUsername)
+
+	resp, err = client.Do(req)
+
+	if err != nil {
+		logger.LogMap.Add(taskId, "FATAL: Failed to make request to Vercel: "+err.Error(), true)
+	}
+
+	body, err := io.ReadAll(resp.Body)
+
+	if err != nil {
+		logger.LogMap.Add(taskId, "FATAL: Failed to read response body: "+err.Error(), true)
+		return
+	}
+
+	if resp.StatusCode >= 400 {
+		logger.LogMap.Add(taskId, "FATAL: Failed to ack Vercel deploy hook: "+string(body), true)
+		return
+	}
+
+	logger.LogMap.Add(taskId, "SUCCESS: Acked Vercel deploy hook: "+string(body), true)
 }
