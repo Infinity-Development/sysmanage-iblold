@@ -105,12 +105,3 @@ servers:
         - path: /
           proxy: http://127.0.0.1:19318
           opts: []
-    - id: code
-      names:
-        - code
-      comment: Microbin
-      broken: false
-      locations:
-        - path: /
-          proxy: http://127.0.0.1:3947
-          opts: []
