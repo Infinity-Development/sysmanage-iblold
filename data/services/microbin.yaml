@@ -1,0 +1,6 @@
+cmd: /root/microbin/microbin --editable --highlightsyntax --port 3947
+dir: /root/microbin
+target: rootpersonal
+description: Microbin pastebin
+after: ibl-maint
+broken: true
