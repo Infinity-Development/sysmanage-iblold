@@ -112,5 +112,5 @@ servers:
       broken: false
       locations:
         - path: /
-          proxy: http://localhost:3947
+          proxy: http://127.0.0.1:3947
           opts: []
