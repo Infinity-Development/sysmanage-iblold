@@ -12,27 +12,41 @@ import (
 var GitRepo string
 var GithubUsername string
 var VercelDeployHook string
+var VercelAPIToken string
+var VercelTeamID string
 
 func InitPlugin(c *types.PluginConfig) error {
-	gitRepo, err := plugins.GetConfig(c.Name)
+	opts, err := plugins.GetConfig(c.Name)
 
 	if err != nil {
 		panic(err)
 	}
 
-	GitRepo, err = gitRepo.GetString("git_repo")
+	GitRepo, err = opts.GetString("git_repo")
 
 	if err != nil {
 		panic(err)
 	}
 
-	GithubUsername, err = gitRepo.GetString("github_username")
+	GithubUsername, err = opts.GetString("github_username")
 
 	if err != nil {
 		panic(err)
 	}
 
-	VercelDeployHook, err = gitRepo.GetString("vercel_deploy_hook")
+	VercelDeployHook, err = opts.GetString("vercel_deploy_hook")
+
+	if err != nil {
+		panic(err)
+	}
+
+	VercelAPIToken, err = opts.GetString("vercel_api_token")
+
+	if err != nil {
+		panic(err)
+	}
+
+	VercelTeamID, err = opts.GetString("vercel_team_id")
 
 	if err != nil {
 		panic(err)

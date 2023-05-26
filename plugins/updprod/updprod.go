@@ -83,7 +83,7 @@ func updateProdTask(taskId string) {
 	logger.LogMap.Add(taskId, "SUCCESS: Disabled enforce_admins", true)
 
 	if !bpDisable {
-		if ok := deleteBranchProtection(taskId, client); !ok {
+		if !deleteBranchProtection(taskId, client) {
 			return
 		}
 
@@ -91,7 +91,7 @@ func updateProdTask(taskId string) {
 	}
 
 	// Delete old production branch
-	if ok := deleteProdBranch(taskId, client); !ok {
+	if !deleteProdBranch(taskId, client) {
 		return
 	}
 
@@ -104,66 +104,33 @@ func updateProdTask(taskId string) {
 	sha := getMainBranchSHA(taskId, client)
 
 	if sha == "" {
+		logger.LogMap.Add(taskId, "FATAL: Failed to get main branch SHA", true)
 		return
 	}
 
 	logger.LogMap.Add(taskId, "Main branch SHA: "+sha, true)
 
-	if ok := createProdBranch(taskId, sha, client); !ok {
+	if !createProdBranch(taskId, sha, client) {
 		return
 	}
 
-	logger.LogMap.Add(taskId, "SUCCESS: Created new production branch", true)
-
 	// Create new production branch protection
 	if !bpDisable {
-		if ok := createBranchProtection(taskId, client); !ok {
+		if !createBranchProtection(taskId, client) {
 			return
 		}
-
-		logger.LogMap.Add(taskId, "SUCCESS: Created branch protection", true)
 
 		// Admin enforce
-		if ok := enableAdminEnforce(taskId, client); !ok {
+		if !enableAdminEnforce(taskId, client) {
 			return
 		}
-
-		logger.LogMap.Add(taskId, "SUCCESS: Enabled enforce_admins", true)
 	}
 
 	logger.LogMap.Add(taskId, "", true)
 	logger.LogMap.Add(taskId, "=> Acking Vercel Deploy Hook", true)
 
 	// Ack Vercel deploy hook
-	req, err = http.NewRequest(
-		"POST",
-		VercelDeployHook,
-		nil,
-	)
-
-	if err != nil {
-		logger.LogMap.Add(taskId, "FATAL: Failed to create request: "+err.Error(), true)
-	}
-
-	req.Header.Set("User-Agent", GithubUsername)
-
-	resp, err = client.Do(req)
-
-	if err != nil {
-		logger.LogMap.Add(taskId, "FATAL: Failed to make request to Vercel: "+err.Error(), true)
-	}
-
-	body, err := io.ReadAll(resp.Body)
-
-	if err != nil {
-		logger.LogMap.Add(taskId, "FATAL: Failed to read response body: "+err.Error(), true)
+	if !ackVercelDeployHook(taskId, client) {
 		return
 	}
-
-	if resp.StatusCode >= 400 {
-		logger.LogMap.Add(taskId, "FATAL: Failed to ack Vercel deploy hook: "+string(body), true)
-		return
-	}
-
-	logger.LogMap.Add(taskId, "SUCCESS: Acked Vercel deploy hook: "+string(body), true)
 }

@@ -179,6 +179,8 @@ func createProdBranch(taskId string, sha string, client http.Client) bool {
 		return false
 	}
 
+	logger.LogMap.Add(taskId, "SUCCESS: Created new production branch", true)
+
 	return true
 }
 
@@ -237,6 +239,8 @@ func createBranchProtection(taskId string, client http.Client) bool {
 		return false
 	}
 
+	logger.LogMap.Add(taskId, "SUCCESS: Created branch protection", true)
+
 	return true
 }
 
@@ -267,6 +271,46 @@ func enableAdminEnforce(taskId string, client http.Client) bool {
 		logger.LogMap.Add(taskId, "FATAL: Failed to enable enforce_admin: "+string(body), true)
 		return false
 	}
+
+	logger.LogMap.Add(taskId, "SUCCESS: Enabled enforce_admins", true)
+
+	return true
+}
+
+func ackVercelDeployHook(taskId string, client http.Client) bool {
+	// Ack Vercel deploy hook
+	req, err := http.NewRequest(
+		"POST",
+		VercelDeployHook,
+		nil,
+	)
+
+	if err != nil {
+		logger.LogMap.Add(taskId, "FATAL: Failed to create request: "+err.Error(), true)
+	}
+
+	req.Header.Set("User-Agent", GithubUsername)
+
+	resp, err := client.Do(req)
+
+	if err != nil {
+		logger.LogMap.Add(taskId, "FATAL: Failed to make request to Vercel: "+err.Error(), true)
+		return false
+	}
+
+	body, err := io.ReadAll(resp.Body)
+
+	if err != nil {
+		logger.LogMap.Add(taskId, "FATAL: Failed to read response body: "+err.Error(), true)
+		return false
+	}
+
+	if resp.StatusCode >= 400 {
+		logger.LogMap.Add(taskId, "FATAL: Failed to ack Vercel deploy hook: "+string(body), true)
+		return false
+	}
+
+	logger.LogMap.Add(taskId, "SUCCESS: Acked Vercel deploy hook: "+string(body), true)
 
 	return true
 }

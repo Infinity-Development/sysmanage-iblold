@@ -28,3 +28,5 @@ plugins:
     git_repo: InfinityBotList/Infinity-Next
     github_username: TheRealToxicDev
     vercel_deploy_hook: 
+    vercel_api_token:
+    vercel_team_id:
