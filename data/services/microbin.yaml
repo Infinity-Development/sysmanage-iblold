@@ -3,4 +3,4 @@ dir: /root/microbin
 target: rootpersonal
 description: Microbin pastebin
 after: ibl-maint
-broken: true
+broken: false
