@@ -80,6 +80,8 @@ github.com/infinitybotlist/sysmanage-web v0.0.0-20230523065524-44ff942026d3 h1:c
 github.com/infinitybotlist/sysmanage-web v0.0.0-20230523065524-44ff942026d3/go.mod h1:NDdyOCWCfaReYci3XCv8otjiTCgZeQ+dw2/9LgKvLfY=
 github.com/infinitybotlist/sysmanage-web v0.0.0-20230523070543-ac15e6343446 h1:a1uWt02lAAvoyG3ia/uMlpbRWR1rT0Ft+6oUmU1aYcI=
 github.com/infinitybotlist/sysmanage-web v0.0.0-20230523070543-ac15e6343446/go.mod h1:NDdyOCWCfaReYci3XCv8otjiTCgZeQ+dw2/9LgKvLfY=
+github.com/infinitybotlist/sysmanage-web v0.0.0-20230526185918-319f7d0b85e3 h1:1aAO/mCrslZfpvpjQ8oXX0u47iFZylguRS7yodg4LA4=
+github.com/infinitybotlist/sysmanage-web v0.0.0-20230526185918-319f7d0b85e3/go.mod h1:NDdyOCWCfaReYci3XCv8otjiTCgZeQ+dw2/9LgKvLfY=
 github.com/jbenet/go-context v0.0.0-20150711004518-d14ea06fba99 h1:BQSFePA1RWJOlocH6Fxy8MmwDt+yVQYULKfN0RoTN8A=
 github.com/jbenet/go-context v0.0.0-20150711004518-d14ea06fba99/go.mod h1:1lJo3i6rXxKeerYnT8Nvf0QmHCRC1n8sfWVwXF2Frvo=
 github.com/jessevdk/go-flags v1.5.0/go.mod h1:Fw0T6WPc1dYxT4mKEZRfG5kJhaTDP9pj1c2EWnYs/m4=
