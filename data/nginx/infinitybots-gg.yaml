@@ -105,3 +105,12 @@ servers:
         - path: /
           proxy: http://127.0.0.1:19318
           opts: []
+    - id: cloud
+      names:
+        - cloud
+      comment: nextcloud
+      broken: false
+      locations:
+        - path: /
+          proxy: http://ibl-backup.local
+          opts: []
