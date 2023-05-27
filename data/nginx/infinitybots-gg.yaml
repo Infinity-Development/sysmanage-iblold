@@ -115,3 +115,12 @@ servers:
           proxy: http://127.0.0.1:5100
           opts:
             - rewrite ^/user/login.*$ /user/oauth2/nextcloud last;
+    - id: snip
+      names:
+        - snip
+      comment: opengist uses gitea -> cloud for auth
+      broken: false
+      locations:
+        - path: /
+          proxy: http://127.0.0.1:6157
+          opts: []
