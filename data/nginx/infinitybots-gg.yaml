@@ -105,3 +105,12 @@ servers:
         - path: /
           proxy: http://127.0.0.1:19318
           opts: []
+    - id: servo
+      names:
+        - servo
+      comment: servo gitea
+      broken: false
+      locations:
+        - path: /
+          proxy: http://127.0.0.1:5100
+          opts: []
