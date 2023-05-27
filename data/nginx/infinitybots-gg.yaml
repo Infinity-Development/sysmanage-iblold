@@ -113,4 +113,5 @@ servers:
       locations:
         - path: /
           proxy: http://127.0.0.1:5100
-          opts: []
+          opts:
+            - rewrite ^/user/login.*$ /user/oauth2/nextcloud last;
