@@ -123,4 +123,5 @@ servers:
       locations:
         - path: /
           proxy: http://127.0.0.1:6157
-          opts: []
+          opts:
+            - rewrite ^/login.*$ /oauth/gitea last;
