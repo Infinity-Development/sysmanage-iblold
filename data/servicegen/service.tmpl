@@ -1,8 +1,8 @@
 [Service]
 Type=simple
 ExecStart={{.Command}}
-User=root
-Group=root
+User={{.User}}
+Group={{.Group}}
 WorkingDirectory={{.Directory}}
 ExecReload=/bin/kill -s HUP $MAINPID
 KillMode=mixed

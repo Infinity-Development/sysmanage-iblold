@@ -60,6 +60,8 @@ github.com/hashicorp/go-retryablehttp v0.7.2/go.mod h1:Jy/gPYAdjqffZ/yFGCFV2doI5
 github.com/imdario/mergo v0.3.13/go.mod h1:4lJ1jqUDcsbIECGy0RUJAXNIhg+6ocWgb1ALK2O4oXg=
 github.com/imdario/mergo v0.3.15 h1:M8XP7IuFNsqUx6VPK2P9OSmsYsI/YFaGil0uD21V3dM=
 github.com/imdario/mergo v0.3.15/go.mod h1:WBLT9ZmE3lPoWsEzCh9LPo3TiwVN+ZKEjmz+hD27ysY=
+github.com/imdario/mergo v0.3.16 h1:wwQJbIsHYGMUyLSPrEq1CT16AhnhNJQ51+4fdHUnCl4=
+github.com/imdario/mergo v0.3.16/go.mod h1:WBLT9ZmE3lPoWsEzCh9LPo3TiwVN+ZKEjmz+hD27ysY=
 github.com/infinitybotlist/eureka v0.0.0-20230515105312-78ff9cf74f63 h1:jzvVBM0fPqprCJbBcvuvo8RhcL4sr5oNAYHzsUjPgCY=
 github.com/infinitybotlist/eureka v0.0.0-20230515105312-78ff9cf74f63/go.mod h1:EncygsTKn7CRa8waGotqG+OpUDxZrwyNBTK47pvSWes=
 github.com/infinitybotlist/sysmanage-web v0.0.0-20230520103215-98fec98b2375 h1:y1kjk9Yuy7r/9L+9O7CrC6zd6K9yo9U0uqm55qRToeo=
@@ -84,6 +86,8 @@ github.com/infinitybotlist/sysmanage-web v0.0.0-20230526185918-319f7d0b85e3 h1:1
 github.com/infinitybotlist/sysmanage-web v0.0.0-20230526185918-319f7d0b85e3/go.mod h1:NDdyOCWCfaReYci3XCv8otjiTCgZeQ+dw2/9LgKvLfY=
 github.com/infinitybotlist/sysmanage-web v0.0.0-20230526190226-f026b4516182 h1:98y7cSN+uhx9liw3IlAK9XiaCDFubIzLGLV7J2cQCRk=
 github.com/infinitybotlist/sysmanage-web v0.0.0-20230526190226-f026b4516182/go.mod h1:NDdyOCWCfaReYci3XCv8otjiTCgZeQ+dw2/9LgKvLfY=
+github.com/infinitybotlist/sysmanage-web v0.0.0-20230527145558-104cf78908c4 h1:PtfxPT/2rzptbSnxJMD8Wo+FwAAMif09WkKNaAE++UA=
+github.com/infinitybotlist/sysmanage-web v0.0.0-20230527145558-104cf78908c4/go.mod h1:NDdyOCWCfaReYci3XCv8otjiTCgZeQ+dw2/9LgKvLfY=
 github.com/jbenet/go-context v0.0.0-20150711004518-d14ea06fba99 h1:BQSFePA1RWJOlocH6Fxy8MmwDt+yVQYULKfN0RoTN8A=
 github.com/jbenet/go-context v0.0.0-20150711004518-d14ea06fba99/go.mod h1:1lJo3i6rXxKeerYnT8Nvf0QmHCRC1n8sfWVwXF2Frvo=
 github.com/jessevdk/go-flags v1.5.0/go.mod h1:Fw0T6WPc1dYxT4mKEZRfG5kJhaTDP9pj1c2EWnYs/m4=
