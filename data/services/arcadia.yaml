@@ -1,5 +1,8 @@
-cmd: "/root/arcadia/bot"
-dir: "/root/arcadia"
+cmd: /root/arcadia/bot
+dir: /root/arcadia
 target: ibl
-after: ibl-maint
 description: Arcadia [v4]
+after: ibl-maint
+broken: false
+user: rooster
+group: rooster
