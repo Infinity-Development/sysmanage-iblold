@@ -125,3 +125,13 @@ servers:
           proxy: http://127.0.0.1:6157
           opts:
             - rewrite ^/login.*$ /oauth/gitea last;
+    - id: skynet
+      names:
+        - skynet
+      comment: Skynet WebViewer
+      broken: false
+      locations:
+        - path: /
+          proxy: https://127.0.0.1:4950
+          opts: []
+real_name: ""
