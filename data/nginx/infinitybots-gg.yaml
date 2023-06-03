@@ -132,6 +132,6 @@ servers:
       broken: false
       locations:
         - path: /
-          proxy: https://127.0.0.1:4950
+          proxy: http://127.0.0.1:4950
           opts: []
 real_name: ""
