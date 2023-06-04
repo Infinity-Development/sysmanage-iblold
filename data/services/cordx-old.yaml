@@ -1,5 +1,8 @@
-cmd: "/usr/bin/npm start"
-dir: "/root/CordX/OldSite"
+cmd: /usr/bin/npm start
+dir: /root/CordX/Production
 target: cordx
-after: ibl-maint
 description: CordX Old Site
+after: ibl-maint
+broken: false
+user: ""
+group: ""
