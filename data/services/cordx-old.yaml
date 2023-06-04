@@ -6,3 +6,11 @@ after: ibl-maint
 broken: false
 user: ""
 group: ""
+git:
+    repo: https://github.com/CordXApp/Website
+    ref: refs/heads/master
+    build_commands:
+        - npm install
+    env: {}
+    allow_dirty: false
+    config_files: []
