@@ -1,0 +1,7 @@
+config.yaml
+sysmanage-ibl
+deploys
+sm-build
+sysmanage
+frontend/node_modules
+frontend/build

@@ -1,0 +1,6 @@
+cmd: /root/persepolis/persepolis
+dir: /root/persepolis
+target: ibl
+description: Onboarding bot [v4]
+after: ibl-maint
+broken: false

@@ -1,0 +1,8 @@
+cmd: /root/arcadia/bot
+dir: /root/arcadia
+target: ibl
+description: Arcadia [v4]
+after: ibl-maint
+broken: false
+user: ""
+group: ""
